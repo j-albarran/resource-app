@@ -1,0 +1,93 @@
+<meta charset="UTF-8">
+
+<link href="content/css/styles.css" rel="stylesheet" type="text/css" />
+<link rel="icon" type="image/png" href="content/images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="content/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="stylesheet" type="text/css" href="content/css/util.css">
+<link rel="stylesheet" type="text/css" href="content/css/main.css">
+<div class="content">
+    <div ng-controller="CashController">
+        <ul>
+            <li>
+                <h1 align="center">Cashes</h1>
+            </li>
+        </ul>
+        <div class="limiter">
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="table100 ver1">
+                        <div class="table100-head">
+                            <table>
+                                <thead>
+                                    <tr class="row100 head">
+                                        <th class="cell100 column1">cashid</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="table100-body js-pscroll">
+                            <table>
+                                <tbody>
+                                    <tr ng-repeat="cash in cashes">
+                                        <td class="cell100 column1">{{cash.cashid}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Add a Cash</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="insertCash()">
+                    <input type="text" placeholder="cashid" ng-model="newCash.cashid" />
+                    <input type="text" placeholder="rname" ng-model="newCash.rname" />
+                    <input type="submit" value="Add new cash" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Delete a Cash</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="deleteCash()">
+                    <input type="text" placeholder="cashid" ng-model="cash_to_delete.cashid" />
+                    <input type="submit" value="Delete cash" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="content/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="content/vendor/bootstrap/js/popper.js"></script>
+    <script src="content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="content/vendor/select2/select2.min.js"></script>
+    <script src="content/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+    	$('.js-pscroll').each(function(){
+    		var ps = new PerfectScrollbar(this);
+
+    		$(window).on('resize', function(){
+    			ps.update();
+    		})
+    	});
+
+
+    </script>
+    <script src="content/js/main.js"></script>
+</div>

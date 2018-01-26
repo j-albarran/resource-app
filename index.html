@@ -1,0 +1,25 @@
+
+<html ng-app="ResourceApp">
+  <head>
+    <title>Resource App</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="content/css/styles.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.min.js"></script>
+
+    <script type="text/javascript" src="content/js/fusioncharts.js"></script>
+    <script type="text/javascript" src="content/js/fusioncharts.charts.js"></script>
+    <script type="text/javascript" src="app/lib/angular-fusioncharts.min.js"></script>
+
+    <script type="text/javascript" src="content/js/themes/fusioncharts.theme.carbon.js"></script>
+    <script type="text/javascript" src="content/js/themes/fusioncharts.theme.ocean.js"></script>
+    <script type="text/javascript" src="content/js/themes/fusioncharts.theme.zune.js"></script>
+  </head>
+  <body>
+
+      <header ng-include="'header.html'"></header>
+
+      <div ng-view></div>
+  </body>
+</html>

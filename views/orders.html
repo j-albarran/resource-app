@@ -1,0 +1,117 @@
+<meta charset="UTF-8">
+
+<link href="content/css/styles.css" rel="stylesheet" type="text/css" />
+<link rel="icon" type="image/png" href="content/images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="content/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="stylesheet" type="text/css" href="content/css/util.css">
+<link rel="stylesheet" type="text/css" href="content/css/main.css">
+<div class="content">
+    <div ng-controller="OrderController">
+        <ul>
+            <li>
+                <h1 align="center">Orders</h1>
+            </li>
+        </ul>
+        <div class="limiter">
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="table100 ver1">
+                        <div class="table100-head">
+                            <table>
+                                <thead>
+                                    <tr class="row100 head">
+                                        <th class="cell100 column1">oid</th>
+                                        <th class="cell100 column2">odate</th>
+                                        <th class="cell100 column3">oprice</th>
+                                        <th class="cell100 column4">ostatus</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="table100-body js-pscroll">
+                            <table>
+                                <tbody>
+                                    <tr ng-repeat="order in orders">
+                                        <td class="cell100 column1">{{order.oid}}</td>
+                                        <td class="cell100 column2">{{order.odate}}</td>
+                                        <td class="cell100 column3">{{order.oprice}}</td>
+                                        <td class="cell100 column4">{{order.ostatus}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Add an Order</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="insertOrder()">
+                    <input type="text" placeholder="odate" ng-model="newOrder.odate" />
+                    <input type="text" placeholder="oprice" ng-model="newOrder.oprice" />
+                    <input type="text" placeholder="ostatus" ng-model="newOrder.ostatus" />
+                    <input type="text" placeholder="payid" ng-model="newOrder.payid" />
+                    <input type="submit" value="Add new order" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Modify an Order</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="updateOrder()">
+                    <input type="text" placeholder="oid" ng-model="order_to_update.oid" />
+                    <input type="text" placeholder="odate" ng-model="order_to_update.odate" />
+                    <input type="text" placeholder="oprice" ng-model="order_to_update.oprice" />
+                    <input type="text" placeholder="ostatus" ng-model="order_to_update.ostatus" />
+                    <input type="submit" value="Modify order" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Delete a Order</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="deleteOrder()">
+                    <input type="text" placeholder="oid" ng-model="order_to_delete.oid" />
+                    <input type="submit" value="Delete order" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="content/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="content/vendor/bootstrap/js/popper.js"></script>
+    <script src="content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="content/vendor/select2/select2.min.js"></script>
+    <script src="content/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+    	$('.js-pscroll').each(function(){
+    		var ps = new PerfectScrollbar(this);
+
+    		$(window).on('resize', function(){
+    			ps.update();
+    		})
+    	});
+
+
+    </script>
+    <script src="content/js/main.js"></script>
+</div>

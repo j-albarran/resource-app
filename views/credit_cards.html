@@ -1,0 +1,122 @@
+<meta charset="UTF-8">
+
+<link href="content/css/styles.css" rel="stylesheet" type="text/css" />
+<link rel="icon" type="image/png" href="content/images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="content/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="stylesheet" type="text/css" href="content/css/util.css">
+<link rel="stylesheet" type="text/css" href="content/css/main.css">
+<div class="content">
+    <div ng-controller="Credit_CardController">
+        <ul>
+            <li>
+                <h1 align="center">Credit Cards</h1>
+            </li>
+        </ul>
+        <div class="limiter">
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="table100 ver1">
+                        <div class="table100-head">
+                            <table>
+                                <thead>
+                                    <tr class="row100 head">
+                                        <th class="cell100 column1">cid</th>
+                                        <th class="cell100 column2">card_number</th>
+                                        <th class="cell100 column3">security_code</th>
+                                        <th class="cell100 column4">ccname</th>
+                                        <th class="cell100 column5">exp_date</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="table100-body js-pscroll">
+                            <table>
+                                <tbody>
+                                    <tr ng-repeat="credit_card in credit_cards">
+                                        <td class="cell100 column1">{{credit_card.cid}}</td>
+                                        <td class="cell100 column2">{{credit_card.card_number}}</td>
+                                        <td class="cell100 column3">{{credit_card.security_code}}</td>
+                                        <td class="cell100 column4">{{credit_card.ccname}}</td>
+                                        <td class="cell100 column5">{{credit_card.exp_date}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Add a Credit Card</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="insertCredit_Card()">
+                    <input type="text" placeholder="card_number" ng-model="newCredit_Card.card_number" />
+                    <input type="text" placeholder="security_code" ng-model="newCredit_Card.security_code" />
+                    <input type="text" placeholder="ccname" ng-model="newCredit_Card.ccname" />
+                    <input type="text" placeholder="exp_date" ng-model="newCredit_Card.exp_date" />
+                    <input type="text" placeholder="rid" ng-model="newCredit_Card.rid" />
+                    <input type="text" placeholder="addid" ng-model="newCredit_Card.addid" />
+                    <input type="submit" value="Add new credit_card" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Modify a Credit Card</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="updateCredit_Card()">
+                    <input type="text" placeholder="cid" ng-model="credit_card_to_update.cid" />
+                    <input type="text" placeholder="card_number" ng-model="credit_card_to_update.card_number" />
+                    <input type="text" placeholder="security_code" ng-model="credit_card_to_update.security_code" />
+                    <input type="text" placeholder="ccname" ng-model="credit_card_to_update.ccname" />
+                    <input type="text" placeholder="exp_date" ng-model="credit_card_to_update.exp_date" />
+                    <input type="submit" value="Modify credit_card" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Delete a Credit Card</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="deleteCredit_Card()">
+                    <input type="text" placeholder="cid" ng-model="credit_card_to_delete.cid" />
+                    <input type="submit" value="Delete credit_card" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="content/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="content/vendor/bootstrap/js/popper.js"></script>
+    <script src="content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="content/vendor/select2/select2.min.js"></script>
+    <script src="content/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+    	$('.js-pscroll').each(function(){
+    		var ps = new PerfectScrollbar(this);
+
+    		$(window).on('resize', function(){
+    			ps.update();
+    		})
+    	});
+
+
+    </script>
+    <script src="content/js/main.js"></script>
+</div>

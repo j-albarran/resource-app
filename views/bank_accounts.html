@@ -1,0 +1,117 @@
+<meta charset="UTF-8">
+
+<link href="content/css/styles.css" rel="stylesheet" type="text/css" />
+<link rel="icon" type="image/png" href="content/images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="content/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="stylesheet" type="text/css" href="content/css/util.css">
+<link rel="stylesheet" type="text/css" href="content/css/main.css">
+<div class="content">
+    <div ng-controller="Bank_AccountController">
+        <ul>
+            <li>
+                <h1 align="center">Bank Accounts</h1>
+            </li>
+        </ul>
+        <div class="limiter">
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="table100 ver1">
+                        <div class="table100-head">
+                            <table>
+                                <thead>
+                                    <tr class="row100 head">
+                                        <th class="cell100 column1">bid</th>
+                                        <th class="cell100 column2">routing</th>
+                                        <th class="cell100 column3">accountNumber</th>
+                                        <th class="cell100 column4">BankName</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="table100-body js-pscroll">
+                            <table>
+                                <tbody>
+                                    <tr ng-repeat="bank_account in bank_accounts">
+                                        <td class="cell100 column1">{{bank_account.bid}}</td>
+                                        <td class="cell100 column2">{{bank_account.routing}}</td>
+                                        <td class="cell100 column3">{{bank_account.accountNumber}}</td>
+                                        <td class="cell100 column4">{{bank_account.BankName}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Add a Bank Account</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="insertBank_Account()">
+                    <input type="text" placeholder="routing" ng-model="newBank_Account.routing" />
+                    <input type="text" placeholder="accountNumber" ng-model="newBank_Account.accountNumber" />
+                    <input type="text" placeholder="BankName" ng-model="newBank_Account.BankName" />
+                    <input type="text" placeholder="sid" ng-model="newBank_Account.sid" />
+                    <input type="submit" value="Add new bank_account" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Modify a Bank Account</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="updateBank_Account()">
+                    <input type="text" placeholder="bid" ng-model="bank_account_to_update.bid" />
+                    <input type="text" placeholder="routing" ng-model="bank_account_to_update.routing" />
+                    <input type="text" placeholder="accountNumber" ng-model="bank_account_to_update.accountNumber" />
+                    <input type="text" placeholder="BankName" ng-model="bank_account_to_update.BankName" />
+                    <input type="submit" value="Modify bank_account" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Delete a Bank Account</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="deleteBank_Account()">
+                    <input type="text" placeholder="bid" ng-model="bank_account_to_delete.bid" />
+                    <input type="submit" value="Delete bank_account" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="content/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="content/vendor/bootstrap/js/popper.js"></script>
+    <script src="content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="content/vendor/select2/select2.min.js"></script>
+    <script src="content/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+    	$('.js-pscroll').each(function(){
+    		var ps = new PerfectScrollbar(this);
+
+    		$(window).on('resize', function(){
+    			ps.update();
+    		})
+    	});
+
+
+    </script>
+    <script src="content/js/main.js"></script>
+</div>

@@ -1,0 +1,122 @@
+<meta charset="UTF-8">
+
+<link href="content/css/styles.css" rel="stylesheet" type="text/css" />
+<link rel="icon" type="image/png" href="content/images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="content/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="stylesheet" type="text/css" href="content/css/util.css">
+<link rel="stylesheet" type="text/css" href="content/css/main.css">
+<div class="content">
+    <div ng-controller="ResourceRequestedController">
+        <ul>
+            <li>
+                <h1 align="center">Resources Requested</h1>
+            </li>
+        </ul>
+        <div class="limiter">
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="table100 ver1">
+                        <div class="table100-head">
+                            <table>
+                                <thead>
+                                    <tr class="row100 head">
+                                        <th class="cell100 column1">rrid</th>
+                                        <th class="cell100 column2">rrqty</th>
+                                        <th class="cell100 column3">rrname</th>
+                                        <th class="cell100 column4">rr_request_date</th>
+                                        <th class="cell100 column5">rr_changed_date</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="table100-body js-pscroll">
+                            <table>
+                                <tbody>
+                                    <tr ng-repeat="resource_requested in resources_requested">
+                                        <td class="cell100 column1">{{resource_requested.rrid}}</td>
+                                        <td class="cell100 column2">{{resource_requested.rrqty}}</td>
+                                        <td class="cell100 column3">{{resource_requested.rrname}}</td>
+                                        <td class="cell100 column4">{{resource_requested.rr_request_date}}</td>
+                                        <td class="cell100 column5">{{resource_requested.rr_changed_date}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Request a Resource</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="insertResourceRequested()">
+                    <input type="text" placeholder="rrqty" ng-model="newRR.rrqty" />
+                    <input type="text" placeholder="rrname" ng-model="newRR.rrname" />
+                    <input type="text" placeholder="rr_request_date" ng-model="newRR.rr_request_date" />
+                    <input type="text" placeholder="rr_changed_date" ng-model="newRR.rr_changed_date" />
+                    <input type="text" placeholder="rid" ng-model="newRR.rid" />
+                    <input type="text" placeholder="cat_name" ng-model="newRR.cat_name" />
+                    <input type="submit" value="Request resource" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Modify a Request</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="updateResourceRequested()">
+                    <input type="text" placeholder="rrid" ng-model="rr_to_update.rrid" />
+                    <input type="text" placeholder="rrqty" ng-model="rr_to_update.rrqty" />
+                    <input type="text" placeholder="rrname" ng-model="rr_to_update.rrname" />
+                    <input type="text" placeholder="rr_request_date" ng-model="rr_to_update.rr_request_date" />
+                    <input type="text" placeholder="rr_changed_date" ng-model="rr_to_update.rr_changed_date" />
+                    <input type="submit" value="Modify request" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Delete a Request</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="deleteResourceRequested()">
+                    <input type="text" placeholder="rrid" ng-model="rr_to_delete.rrid" />
+                    <input type="submit" value="Delete request" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="content/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="content/vendor/bootstrap/js/popper.js"></script>
+<script src="content/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="content/vendor/select2/select2.min.js"></script>
+<script src="content/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script>
+	$('.js-pscroll').each(function(){
+		var ps = new PerfectScrollbar(this);
+
+		$(window).on('resize', function(){
+			ps.update();
+		})
+	});
+
+
+</script>
+<script src="content/js/main.js"></script>

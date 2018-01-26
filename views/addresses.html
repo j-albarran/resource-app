@@ -1,0 +1,122 @@
+<meta charset="UTF-8">
+
+<link href="content/css/styles.css" rel="stylesheet" type="text/css" />
+<link rel="icon" type="image/png" href="content/images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="content/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="stylesheet" type="text/css" href="content/css/util.css">
+<link rel="stylesheet" type="text/css" href="content/css/main.css">
+<div class="content">
+    <div ng-controller="AddressController">
+        <ul>
+            <li>
+                <h1 align="center">Addresses</h1>
+            </li>
+        </ul>
+        <div class="limiter">
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="table100 ver1">
+                        <div class="table100-head">
+                            <table>
+                                <thead>
+                                    <tr class="row100 head">
+                                        <th class="cell100 column1">addId</th>
+                                        <th class="cell100 column2">street</th>
+                                        <th class="cell100 column3">number</th>
+                                        <th class="cell100 column4">unit</th>
+                                        <th class="cell100 column5">zipcode</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="table100-body js-pscroll">
+                            <table>
+                                <tbody>
+                                    <tr ng-repeat="address in addresses">
+                                        <td class="cell100 column1">{{address.addId}}</td>
+                                        <td class="cell100 column2">{{address.street}}</td>
+                                        <td class="cell100 column3">{{address.number}}</td>
+                                        <td class="cell100 column4">{{address.unit}}</td>
+                                        <td class="cell100 column5">{{address.zipcode}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Add an Address</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="insertAddress()">
+                    <input type="text" placeholder="street" ng-model="newAddress.street" />
+                    <input type="text" placeholder="number" ng-model="newAddress.number" />
+                    <input type="text" placeholder="unit" ng-model="newAddress.unit" />
+                    <input type="text" placeholder="zipcode" ng-model="newAddress.zipcode" />
+                    <input type="text" placeholder="aid" ng-model="newAddress.aid" />
+                    <input type="text" placeholder="cname" ng-model="newAddress.cname" />
+                    <input type="submit" value="Add new address" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Modify an Address</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="updateAddress()">
+                    <input type="text" placeholder="addId" ng-model="address_to_update.addId" />
+                    <input type="text" placeholder="street" ng-model="address_to_update.street" />
+                    <input type="text" placeholder="number" ng-model="address_to_update.number" />
+                    <input type="text" placeholder="unit" ng-model="address_to_update.unit" />
+                    <input type="text" placeholder="zipcode" ng-model="address_to_update.zipcode" />
+                    <input type="submit" value="Modify address" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Delete an Address</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="deleteAddress()">
+                    <input type="text" placeholder="addId" ng-model="address_to_delete.addId" />
+                    <input type="submit" value="Delete address" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="content/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="content/vendor/bootstrap/js/popper.js"></script>
+    <script src="content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="content/vendor/select2/select2.min.js"></script>
+    <script src="content/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+    	$('.js-pscroll').each(function(){
+    		var ps = new PerfectScrollbar(this);
+
+    		$(window).on('resize', function(){
+    			ps.update();
+    		})
+    	});
+
+
+    </script>
+    <script src="content/js/main.js"></script>
+</div>

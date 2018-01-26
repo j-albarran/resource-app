@@ -1,0 +1,130 @@
+<meta charset="UTF-8">
+
+<link href="content/css/styles.css" rel="stylesheet" type="text/css" />
+<link rel="icon" type="image/png" href="content/images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="content/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="stylesheet" type="text/css" href="content/css/util.css">
+<link rel="stylesheet" type="text/css" href="content/css/main.css">
+<div class="content">
+    <div ng-controller="ResourceController">
+        <ul>
+            <li>
+                <h1 align="center">Resources</h1>
+            </li>
+        </ul>
+        <div class="limiter">
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="table100 ver1">
+                        <div class="table100-head">
+                            <table>
+                                <thead>
+                                    <tr class="row100 head">
+                                        <th class="cell100 column1">rsid</th>
+                                        <th class="cell100 column2">rsname</th>
+                                        <th class="cell100 column3">rdescription</th>
+                                        <th class="cell100 column4">r_changed_date</th>
+                                        <th class="cell100 column5">rqty</th>
+                                        <th class="cell100 column6">rprice</th>
+                                        <th class="cell100 column7">r_supply_date</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="table100-body js-pscroll">
+                            <table>
+                                <tbody>
+                                    <tr ng-repeat="resource in resources">
+                                        <td class="cell100 column1">{{resource.rsid}}</td>
+                                        <td class="cell100 column2">{{resource.rsname}}</td>
+                                        <td class="cell100 column3">{{resource.rdescription}}</td>
+                                        <td class="cell100 column4">{{resource.r_changed_date}}</td>
+                                        <td class="cell100 column5">{{resource.rqty}}</td>
+                                        <td class="cell100 column6">{{resource.rprice | currency}}</td>
+                                        <td class="cell100 column7">{{resource.r_supply_date}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Add a Resource</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="insertResource()">
+                    <input type="text" placeholder="rsname" ng-model="newResource.rsname" />
+                    <input type="text" placeholder="rdescription" ng-model="newResource.rdescription" />
+                    <input type="text" placeholder="r_changed_date" ng-model="newResource.r_changed_date" />
+                    <input type="text" placeholder="rqty" ng-model="newResource.rqty" />
+                    <input type="text" placeholder="rprice" ng-model="newResource.rprice" />
+                    <input type="text" placeholder="r_supply_date" ng-model="newResource.r_supply_date" />
+                    <input type="text" placeholder="sid" ng-model="newResource.sid" />
+                    <input type="text" placeholder="cat_name" ng-model="newResource.cat_name" />
+                    <input type="submit" value="Add new resource" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Modify a Resource</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="updateResource()">
+                    <input type="text" placeholder="rsid" ng-model="resource_to_update.rsid" />
+                    <input type="text" placeholder="rsname" ng-model="resource_to_update.rsname" />
+                    <input type="text" placeholder="rdescription" ng-model="resource_to_update.rdescription" />
+                    <input type="text" placeholder="r_changed_date" ng-model="resource_to_update.r_changed_date" />
+                    <input type="text" placeholder="rqty" ng-model="resource_to_update.rqty" />
+                    <input type="text" placeholder="rprice" ng-model="resource_to_update.rprice" />
+                    <input type="text" placeholder="r_supply_date" ng-model="resource_to_update.r_supply_date" />
+                    <input type="submit" value="Modify resource" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Delete a Resource</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="deleteResource()">
+                    <input type="text" placeholder="rsid" ng-model="resource_to_delete.rsid" />
+                    <input type="submit" value="Delete resource" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="content/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="content/vendor/bootstrap/js/popper.js"></script>
+    <script src="content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="content/vendor/select2/select2.min.js"></script>
+    <script src="content/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+    	$('.js-pscroll').each(function(){
+    		var ps = new PerfectScrollbar(this);
+
+    		$(window).on('resize', function(){
+    			ps.update();
+    		})
+    	});
+
+
+    </script>
+    <script src="content/js/main.js"></script>
+</div>

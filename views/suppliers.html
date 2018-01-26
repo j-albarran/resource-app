@@ -1,0 +1,120 @@
+<meta charset="UTF-8">
+
+<link href="content/css/styles.css" rel="stylesheet" type="text/css" />
+<link rel="icon" type="image/png" href="content/images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="content/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="stylesheet" type="text/css" href="content/css/util.css">
+<link rel="stylesheet" type="text/css" href="content/css/main.css">
+<div class="content">
+    <div ng-controller="SupplierController">
+        <ul>
+            <li>
+                <h1 align="center">Suppliers</h1>
+            </li>
+        </ul>
+        <div class="limiter">
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="table100 ver1">
+                        <div class="table100-head">
+                            <table>
+                                <thead>
+                                    <tr class="row100 head">
+                                        <th class="cell100 column1">sid</th>
+                                        <th class="cell100 column2">afirst</th>
+                                        <th class="cell100 column3">alast</th>
+                                        <th class="cell100 column4">email</th>
+                                        <th class="cell100 column5">phone</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="table100-body js-pscroll">
+                            <table>
+                                <tbody>
+                                    <tr ng-repeat="supplier in suppliers">
+                                        <td class="cell100 column1">{{supplier.sid}}</td>
+                                        <td class="cell100 column2">{{supplier.afirst}}</td>
+                                        <td class="cell100 column3">{{supplier.alast}}</td>
+                                        <td class="cell100 column4">{{supplier.email}}</td>
+                                        <td class="cell100 column5">{{supplier.phone}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Add a Supplier</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="insertSupplier()">
+                    <input type="text" placeholder="afirst" ng-model="newSupplier.afirst" />
+                    <input type="text" placeholder="alast" ng-model="newSupplier.alast" />
+                    <input type="text" placeholder="email" ng-model="newSupplier.email" />
+                    <input type="text" placeholder="phone" ng-model="newSupplier.phone" />
+                    <input type="submit" value="Add new supplier" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Modify a Supplier</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="updateSupplier()">
+                    <input type="text" placeholder="sid" ng-model="supplier_to_update.sid" />
+                    <input type="text" placeholder="afirst" ng-model="supplier_to_update.afirst" />
+                    <input type="text" placeholder="alast" ng-model="supplier_to_update.alast" />
+                    <input type="text" placeholder="email" ng-model="supplier_to_update.email" />
+                    <input type="text" placeholder="phone" ng-model="supplier_to_update.phone" />
+                    <input type="submit" value="Modify supplier" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Delete a Supplier</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="deleteSupplier()">
+                    <input type="text" placeholder="sid" ng-model="supplier_to_delete.sid" />
+                    <input type="submit" value="Delete supplier" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="content/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="content/vendor/bootstrap/js/popper.js"></script>
+    <script src="content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="content/vendor/select2/select2.min.js"></script>
+    <script src="content/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+    	$('.js-pscroll').each(function(){
+    		var ps = new PerfectScrollbar(this);
+
+    		$(window).on('resize', function(){
+    			ps.update();
+    		})
+    	});
+
+
+    </script>
+    <script src="content/js/main.js"></script>
+</div>

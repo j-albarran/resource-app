@@ -1,0 +1,125 @@
+<meta charset="UTF-8">
+
+<link href="content/css/styles.css" rel="stylesheet" type="text/css" />
+<link rel="icon" type="image/png" href="content/images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="content/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="stylesheet" type="text/css" href="content/css/util.css">
+<link rel="stylesheet" type="text/css" href="content/css/main.css">
+<div class="content">
+    <div ng-controller="TransactionController">
+        <ul>
+            <li>
+                <h1 align="center">Transactions</h1>
+            </li>
+        </ul>
+        <div class="limiter">
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="table100 ver1">
+                        <div class="table100-head">
+                            <table>
+                                <thead>
+                                    <tr class="row100 head">
+                                        <th class="cell100 column1">tid</th>
+                                        <th class="cell100 column2">tprice</th>
+                                        <th class="cell100 column3">tqty</th>
+                                        <th class="cell100 column4">tdate</th>
+                                        <th class="cell100 column5">tstatus</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="table100-body js-pscroll">
+                            <table>
+                                <tbody>
+                                    <tr ng-repeat="transaction in transactions">
+                                        <td class="cell100 column1">{{transaction.tid}}</td>
+                                        <td class="cell100 column2">{{transaction.tprice}}</td>
+                                        <td class="cell100 column3">{{transaction.tqty}}</td>
+                                        <td class="cell100 column4">{{transaction.tdate}}</td>
+                                        <td class="cell100 column5">{{transaction.tstatus}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Add a Transaction</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="insertTransaction()">
+                    <input type="text" placeholder="tprice" ng-model="newTransaction.tprice" />
+                    <input type="text" placeholder="tqty" ng-model="newTransaction.tqty" />
+                    <input type="text" placeholder="tdate" ng-model="newTransaction.tdate" />
+                    <input type="text" placeholder="sid" ng-model="newTransaction.sid" />
+                    <input type="text" placeholder="bid" ng-model="newTransaction.bid" />
+                    <input type="text" placeholder="rsid" ng-model="newTransaction.rsid" />
+                    <input type="text" placeholder="rid" ng-model="newTransaction.rid" />
+                    <input type="text" placeholder="oid" ng-model="newTransaction.oid" />
+                    <input type="text" placeholder="tstatus" ng-model="newTransaction.tstatus" />
+                    <input type="submit" value="Add new transaction" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Modify a Transaction</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="updateTransaction()">
+                    <input type="text" placeholder="tid" ng-model="transaction_to_update.tid" />
+                    <input type="text" placeholder="tprice" ng-model="transaction_to_update.tprice" />
+                    <input type="text" placeholder="tqty" ng-model="transaction_to_update.tqty" />
+                    <input type="text" placeholder="tdate" ng-model="transaction_to_update.tdate" />
+                    <input type="text" placeholder="tstatus" ng-model="transaction_to_update.tstatus" />
+                    <input type="submit" value="Modify transaction" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Delete a Transaction</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="deleteTransaction()">
+                    <input type="text" placeholder="tid" ng-model="transaction_to_delete.tid" />
+                    <input type="submit" value="Delete transaction" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="content/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="content/vendor/bootstrap/js/popper.js"></script>
+    <script src="content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="content/vendor/select2/select2.min.js"></script>
+    <script src="content/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+    	$('.js-pscroll').each(function(){
+    		var ps = new PerfectScrollbar(this);
+
+    		$(window).on('resize', function(){
+    			ps.update();
+    		})
+    	});
+
+
+    </script>
+    <script src="content/js/main.js"></script>
+</div>

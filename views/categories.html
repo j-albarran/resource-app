@@ -1,0 +1,109 @@
+<meta charset="UTF-8">
+
+<link href="content/css/styles.css" rel="stylesheet" type="text/css" />
+<link rel="icon" type="image/png" href="content/images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="content/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="content/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="stylesheet" type="text/css" href="content/css/util.css">
+<link rel="stylesheet" type="text/css" href="content/css/main.css">
+<div class="content">
+    <div ng-controller="CategoryController">
+        <ul>
+            <li>
+                <h1 align="center">Categories</h1>
+            </li>
+        </ul>
+        <div class="limiter">
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="table100 ver1">
+                        <div class="table100-head">
+                            <table>
+                                <thead>
+                                    <tr class="row100 head">
+                                        <th class="cell100 column1">cat_name</th>
+                                        <th class="cell100 column2">cat_pname</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="table100-body js-pscroll">
+                            <table>
+                                <tbody>
+                                    <tr ng-repeat="category in categories">
+                                        <td class="cell100 column1">{{category.cat_name}}</td>
+                                        <td class="cell100 column2">{{category.cat_pname}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Add a Category</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="insertCategory()">
+                    <input type="text" placeholder="cat_name" ng-model="newCategory.cat_name" />
+                    <input type="text" placeholder="cat_pname" ng-model="newCategory.cat_pname" />
+                    <input type="submit" value="Add new category" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Modify a Category</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="updateCategory()">
+                    <input type="text" placeholder="cat_name" ng-model="category_to_update.cat_name" />
+                    <input type="text" placeholder="cat_pname" ng-model="category_to_update.cat_pname" />
+                    <input type="submit" value="Modify category" />
+                </form>
+            </div>
+
+            <ul>
+                <li>
+                    <h1 align="center">Delete a Category</h1>
+                </li>
+            </ul>
+
+            <div align="center">
+                <form ng-submit="deleteCategory()">
+                    <input type="text" placeholder="cat_name" ng-model="category_to_delete.cat_name" />
+                    <input type="submit" value="Delete category" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="content/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="content/vendor/bootstrap/js/popper.js"></script>
+    <script src="content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="content/vendor/select2/select2.min.js"></script>
+    <script src="content/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+    	$('.js-pscroll').each(function(){
+    		var ps = new PerfectScrollbar(this);
+
+    		$(window).on('resize', function(){
+    			ps.update();
+    		})
+    	});
+
+
+    </script>
+    <script src="content/js/main.js"></script>
+</div>
